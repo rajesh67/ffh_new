@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load common_fundraiser_tags %}
+
+{% block pagecontent %}
+<form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+<div class="campaign-page">
+  <div class="container-fluid" style="margin-bottom: 50px;">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Campaign Title -->
+        <div class="container-fluid" style="background-color:none;">
+          <div class="campaign-title text-center">
+            <a href="{% url 'detail-fundraiser' object.pk %}"><h5>{{object.title}}</h5></a>
+            <h4 class="form-group">
+              {% bootstrap_field form.title layout='horizontal' %}
+            </h4>
+            <div class="campaign-subtitle" style="background-color:none;" style="">
+              
+                {% bootstrap_field form.causes layout='horizontal' size='medium'  form_group_class='form-group' show_help=True %}
+           
+            </div>
+          </div>
+        </div><!-- Campaign Title -->
+
+        <!-- Campaign Header Container -->
+        <div class="container-fluid" id="campaign-header-slides" style="background-color: #e6e6d1; margin-top: 10%; padding-bottom: 5%;">
+          <div class="row">
+            <div class="col-md-12" >
+              <div class="text-center" style="padding-bottom: 5%;">
+                {% bootstrap_field form.campaign_type layout='horizontal' %}
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+              <div class="col-md-7">
+                  <img src="{{MEDIA_URL}}images/blackImage.svg" width="60%" style="z-index: -3;">
+                <div class="card" style="margin-top: -50%; margin-left: 2%; width: 50%; padding: 5% 5%;">
+                  
+                  <div class="card-text">
+                    <div class="image_link">
+                      {% bootstrap_field form.image layout='horizontal'%}
+                    </div>
+
+                    <div class="video_link" style="background-color: white; z-index: 5;">
+                      {% bootstrap_field form.video_link layout='horizontal' %}
+                    </div>
+                  </div>                
+                </div>
+              </div>
+              <!-- Donation Details Tile -->
+              <div class="col-md-3">
+                <!-- Buttons -->
+                <div class="donation-buttons">
+                  <div class="contribute" style="margin-top: 10px;">
+                    <button class="btn btn-block btn-lg btn-info">Contribute Now</button>
+                  </div>
+                  <div class="social" style="margin-top: 10px;">
+                    <button class="btn btn-block btn-success btn-lg">Share On Facebook</button>
+                  </div>
+                </div><!-- Buttons -->
+
+                <!-- Fundraiser Amount Details -->
+                <div class="request-amount" style="margin-top: 10px;">
+                  <!-- Money Raised -->
+                  <div class="money-raised">
+                    <div class="title">
+                      <h4>Rs. {{object.raised_amount}}</h4>
+                      <strong><h5>raised out of Rs. {{object.goal_amount}}</h5></strong>
+                    </div>
+                     <div class="progress" style="margin-top: 15px;">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{object.progress}}"
+                      aria-valuemin="0" aria-valuemax="100" style="width:{{object.progress}}%">
+                        <span class="sr-only">{{object.progress}}% Complete</span>
+                      </div>
+                    </div>
+                    <div class="supporters" style="margin-bottom: 10px;">
+                      <span>26 Supporters</span>
+                      <span class="text-right" style="margin-top: -40px; margin-left: 30%;">{{ object.end_date|duration }} Days to go</span>  
+                    </div>
+                     
+                  </div>
+                  <!-- Money Raised Ended -->
+                  <hr style="border:1px solid black;">
+                  <div class="fundraiser-profile-shortinfo" style="margin-top: 10px; margin-bottom: 20px;">
+                    <img src="{{MEDIA_URL}}images/donation.png" width="50px;" height="50px;" class="rounded floar-left">
+                    <div class="profile-details" style="margin-left: 20%; margin-top: -20%;">
+                      <strong>Campaigner</strong><br>
+                      <a href="{% url 'profile-detail' request.user.pk %}"><strong>{{request.user.full_name}}</strong></a><br>
+                      <div class="city form-group">
+                        
+                        {% bootstrap_field form.city layout='horizontal' %}
+                        
+                        
+                      </div>
+                      3550+ friends<br>
+                      Mumbai <a href="">Contact</a>
+                    </div>
+                    <hr style="border:1px solid black;">
+                   
+
+                    <!-- <p>
+                      {% buttons %}
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      {% bootstrap_icon "star" %}add Beneficiary
+                    </button>
+                    {% endbuttons %}
+                  </p>
+                  <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                      <small>{% url 'new-fundraiser-beneficiary' object.pk %}</small>
+                      <form class="form-horizontal" action="{% url 'new-fundraiser-beneficiary' object.pk %}" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form beneficiary_form %}
+                        {% buttons %}
+                          <button class="btn btn-primary btn-block" type="submit">
+                          {% bootstrap_icon "star" %}Create Beneficiary</button>
+                        {% endbuttons %}
+                      </form>
+                    </div>
+                  </div> -->
+                  
+
+
+                    
+                  </div>
+                </div>
+              </div><!-- Donation Details Tile -->
+              <div class="col-md-1"></div>
+          </div>
+        </div><!-- Campaign Headers Slides -->
+    </div>
+    <div class="col-md-12">
+        <!-- Camaign Navbar -->
+        <div class="campaign-navbar" style="margin-top: 2%;">
+          <nav class="navbar navbar-light justify-content-between navbar-expand" style="border:1px solid black; id="contentsNavbar">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <!-- <span class="navbar-toggler-icon"><img src="{{ MEDIA_URL }}images/logo.png"></span> -->
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav justify-content-between" style="margin-left: 10%;">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'home' %}">Updates <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">About</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Comments</a>
+                    </li>
+                 
+                   
+                      <li class="nav-item" style="margin-left: 75%">
+                        <a href="">
+                          <button class="btn btn-warning">Ask for updates</button>
+                        </a>
+                      </li>
+                   
+                  </ul>
+                </div>
+              </nav>
+        </div>
+        <!-- Campaign Navbar -->
+      </div>
+
+      <!-- 1. Campaign Update, Fundraiser Details and Comment 2. Donors and Rewards -->
+      <!-- <div class="campaign-detailed-description"> -->
+        
+        <!-- Campaign Update, Fundraiser Details and Comment -->
+        <div class="col-md-8" id="campaign-detailed-description" style="margin-top: 20px;">
+          <!-- Campaign Updates -->
+          <div class="campaign-updates" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title" style="border-bottom: 1px dotted black; margin-top: 2%;">
+                {% bootstrap_field form.short_description %}
+              </div>
+              <div class="card-title">
+                  <div id="summernote">
+                    {% bootstrap_field form.full_description %}
+                  </div>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      $('#summernote').summernote();
+                    });
+                  </script>
+              </div>
+              <div class="card-text">
+                <!-- <form class="form-horizontal" action="" method="post" class="form" style="margin: 5% 5%;">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          {% buttons %}
+              <button type="submit" class="btn btn-block btn-bg btn-primary">
+                  {% bootstrap_icon "star" %} Submit
+              </button>
+          {% endbuttons %}
+      </form> -->
+              </div>
+            </div>
+          </div> <!-- Campaign Updates -->
+          
+
+        </div><!-- Campaign Update, Fundraiser Details and Comment -->
+        <!-- Campaign Donors and Rewards -->
+        <div class="col-md-4" style="margin-top: 20px;">
+          <!-- Top Donors -->
+          
+          <!-- Rewards -->
+          <div class="campaign-rewards" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title"></div>
+              <div class="card-text" style="border-bottom: 1px solid black;">
+                <h4>Add Rewards</h4>
+              </div>
+              <div class="card-text">
+                
+                  
+                
+              </div>
+            </div>
+          </div><!-- Rewards -->
+        </div><!-- Campaign Donors and Rewards -->
+
+      <!-- </div> --><!--  Campaign Update, Fundraiser Details and Comment 2. Donors and Rewards-->
+    </div><!-- Row Class -->
+  </div>
+</div>
+<div class="bottom-nav">
+  <nav class="navbar fixed-bottom navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        
+          <button type="submit" class="btn btn-primary btn-block">Save As DRAFT</button> 
+        
+      </div>
+      <div class="col-md-3">
+        
+        <button class="btn btn-primary btn-block">Publish</button>
+        
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </nav>
+</div>
+</form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block pagecontent %}
+<div class="signupPage">
+  <!-- Row class -->
+  <div class="col-md-12">
+    <!-- Signup Form Card -->
+    <div class="card" id="signupForm">
+      <div class="card-title">
+        <div class="text-center">
+          <h2><strong>Welcome</strong></h2>
+          <p>Let's get to know each other a little better, shall we?</p>
+        </div>
+      </div>
+      <div class="back-button">
+        <a href="{% url 'signup-page' %}"><button class="btn btn-default"><< Go Back</button></a>
+      </div>
+
+      <div class="card-text">
+        <div class="signupFormBody">
+        	{# Display a form #}
+			<form class="form-horizontal" action="" method="post" class="form" style="margin: 5% 5%;">
+			    {% csrf_token %}
+			    {% bootstrap_form form %}
+			    {% buttons %}
+			        <button type="submit" class="btn btn-block btn-bg btn-primary">
+			            {% bootstrap_icon "star" %} Submit
+			        </button>
+			    {% endbuttons %}
+			</form>
+        </div>
+        <hr id="line" style="border: 1px solid black; margin-bottom: 10px; margin-top: 10px;">
+
+        <div class="login text-center" style="margin-top: 10px; margin-bottom: 20px; margin-left: 5%; margin-right: 5%;">
+          <p>Already have an account? <a href="{% url 'login-page' %}">Log In</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- /Signup Form Card -->
+  </div>
+  <!-- / Row Class -->
+</div>
+{% endblock %}

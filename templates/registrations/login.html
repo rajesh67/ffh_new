@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block pagecontent %}
+<div class="loginPage">
+	<!-- Row Class -->
+	<div class="row">
+		<!-- Only Column -->
+		<div class="col-md-12">
+			<!-- Header Text -->
+			<div class="text-center" id="loginMoto">
+				<h5>Nice to see you, change-maker!</h5>
+				<p>Sign in so you can make a real difference and see the awesome,<br>inspiring stories we come across every day.</p>
+			</div>
+			<!-- Login Form Card -->
+			<div class="card">
+				<div class="card-text">
+					<div id="fbSignin">
+						<button class="btn btn-block btn-info btn-md">SingIn with Facebook</button>
+					</div>
+
+					<hr id="line" style="border: 1px solid black; margin-bottom: 10px; margin-top: 10px;">
+
+					<div class="loginFormBody">
+		        	{# Display a form #}
+					<form class="form-horizontal" action="" method="post" class="form" style="margin: 5% 5%;">
+					    {% csrf_token %}
+					    {% bootstrap_form form %}
+					    {% buttons %}
+					        <button type="submit" class="btn btn-block btn-bg btn-primary">
+					            {% bootstrap_icon "star" %} Submit
+					        </button>
+					    {% endbuttons %}
+					</form>
+		        </div>
+
+					<hr id="line" style="border: 1px solid black; margin-bottom: 10px; margin-top: 10px;">
+
+					<div class="signup">
+						<div class="text-center">
+							<p>New to Help For Friends? <a href="{% url 'signup-page' %}">Sign Up</a></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div><!-- /Only Column -->
+	</div>
+	/<!-- Row Class -->
+</div>
+{% endblock %}

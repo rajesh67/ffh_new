@@ -1,0 +1,39 @@
+.campaignStartPage{
+	padding-bottom: 100px;
+	background-color: beige;
+}
+
+.campaignStartPage > div.row > div>div.titlePhrase{
+	margin-top: 20px;
+	padding-bottom: 5%;
+}
+.campaignStartPage > div.row > div#personal{
+	margin-left: 15%;
+}
+
+.campaignStartPage > div.row > div#creative{
+	margin-bottom: : 500px;
+}
+
+.campaignStartPage > div.row > div#organizations{
+	margin-bottom: : 200px;
+}
+
+
+.campaignStartPage > div.row > div#personal >a >div.block-center>div.text-center{
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: -60%;
+}
+
+.campaignStartPage > div.row > div#organizations >a >div.block-center>div.text-center{
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: -50%;
+}
+
+.campaignStartPage > div.row > div#creative >a >div.block-center>div.text-center{
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: -50%;
+}

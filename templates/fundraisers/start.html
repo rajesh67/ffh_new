@@ -1,0 +1,55 @@
+{% extends 'home.html' %}
+
+{% block pagecontent %}
+<div class="campaignStartPage">
+	<!-- Row Class -->
+	<div class="row">
+		<!-- Main Column -->
+		<div class="col-md-12 text-center">
+			<div class="titlePhrase">
+				<h2>Who are you raising money for?</h2>
+			</div>
+		</div>
+		<!-- /Main Column -->
+		<!-- Three Columns -->
+		<div class="col-md-3" id="personal">
+			<a href="{% url 'new-fundraiser'%}">
+				<div class="block-center">
+					<img src="{{ MEDIA_URL }}personal.jpg" width="100%">
+					<div class="text-center">
+						<h3>Personal</h3>
+						<p>If you're taking charge of yourself or being a kind soul to a loved one in need.</p>
+					</div>
+				</div>
+			</a>
+
+		</div><!-- /Personal -->
+
+		<div class="col-md-3" id="organizations">
+			<a href="{% url 'signup-page' %}">
+				<div class="block-center">
+					<img src="{{ MEDIA_URL }}images/blackImage.svg" width="100%">
+					<div class="text-center">
+						<h3>NGO/Charity</h3>
+						<p>If you're supporting the NGO/charitable trust that works for the cause you believe in.</p>
+					</div>
+				</div>
+			</a>
+		</div><!-- /NGO/Charity -->
+
+		<div class="col-md-3" id="creative">
+			<a href="{% url 'signup-page' %}">
+				<div class="block-center">
+					<img src="{{ MEDIA_URL }}images/blackImage.svg" width="100%">
+					<div class="text-center">
+						<h3>Creative</h3>
+						<p>If you want to turn that wonderful idea of yours into reality.</p>
+					</div>
+				</div>
+			</a>
+		</div><!-- /Creative -->
+		<!-- /Three Columns -->
+
+	</div><!-- /Row -->
+</div>
+{% endblock %}

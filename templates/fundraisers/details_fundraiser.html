@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load common_fundraiser_tags %}
+{% block pagecontent %}
+<div class="campaign-page">
+  <div class="container-fluid" style="margin-bottom: 20px;">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Campaign Title -->
+        <div class="container-fluid" style="background-color:none;">
+          <div class="campaign-title">
+            
+            <div class="titleUpdate">
+               <form class="form-horizontal" action="{% url 'update-fundraiser' object.pk %}" method="post">
+                  {% csrf_token %}
+                  {% bootstrap_form title_form %}
+                  {% buttons %}
+                    <button class="btn btn-primary btn-block" type="submit">
+                    {% bootstrap_icon "star" %}Update Details</button>
+                  {% endbuttons %}
+                </form>
+                      </div>
+            </div>
+
+        </div><!-- Campaign Title -->
+
+        <!-- Campaign Header Container -->
+        <div class="container-fluid" id="campaign-header-slides" style="background-color: #e6e6d1; margin-top: 20px; padding-bottom: 5%;">
+          <div class="row">
+              <div class="col-md-8" >
+                <img src="{{MEDIA_URL}}{{object.image}}" width="100%" style="margin-top: 2%;">               
+              </div>
+              <!-- Donation Details Tile -->
+              <div class="col-md-3">
+                <!-- Buttons -->
+                <div class="donation-buttons">
+                  <div class="contribute" style="margin-top: 10px;">
+                    <button class="btn btn-block btn-lg btn-info">Contribute Now</button>
+                  </div>
+                  <div class="social" style="margin-top: 10px;">
+                    <button class="btn btn-block btn-success btn-lg">Share On Facebook</button>
+                  </div>
+                </div><!-- Buttons -->
+
+                <!-- Fundraiser Amount Details -->
+                <div class="request-amount" style="margin-top: 10px;">
+                  <!-- Money Raised -->
+                  <div class="money-raised">
+                    <div class="title">
+                      {% if not object.raised_amount %}
+                        <div class="help_text">
+                          <a href=""><p>Be the first supporter for this campaign</p></a>
+                        </div>
+                      {% else %}
+                        <h4>Rs. {{ object.raised_amount }}</h4>
+                      {% endif %}
+                      <strong><h5>raised out of Rs. {{ object.goal }}</h5></strong>
+                    </div>
+                     <div class="progress" style="margin-top: 15px;">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{object.progress}}"
+                      aria-valuemin="0" aria-valuemax="100" style="width:{{object.progress}}%">
+                        <span class="sr-only">{{object.progress}}% Complete</span>
+                      </div>
+                    </div>
+                    <div class="supporters" style="margin-bottom: 10px;">
+                      <span>26 Supporters</span>
+                      <span class="text-right" style="margin-top: -40px; margin-left: 30%;">46 Days to go</span>  
+                    </div>
+                     
+                  </div>
+                  <!-- Money Raised Ended -->
+                  <hr style="border:1px solid black;">
+                  <div class="fundraiser-profile-shortinfo" style="margin-top: 10px; margin-bottom: 20px;">
+                    <img src="{{MEDIA_URL}}images/donation.png" width="50px;" height="50px;" class="rounded floar-left">
+                    <div class="profile-details" style="margin-left: 20%; margin-top: -20%;">
+                      <strong>Campaigner and Beneficiary </strong><br>
+                      <a href="{% url 'profile-detail' request.user.pk %}"><strong>{{ request.user.full_name}}</strong></a><br>
+                      3550+ friends<br>
+                      <div class="cityUpdate">
+                         <form class="form-horizontal" action="{% url 'update-fundraiser' object.pk %}" method="post">
+                          {% csrf_token %}
+                          {% bootstrap_form city_form %}
+                          {% buttons %}
+                            <button class="btn btn-primary btn-block" type="submit">
+                            {% bootstrap_icon "star" %}Update City</button>
+                          {% endbuttons %}
+                        </form>
+                      </div>
+                      <a href="{% url 'update-fundraiser' object.pk %}"><button type="button" class="btn btn-primary"><strong>update fundraiser</strong></button></a>
+                    </div>
+                  </div>
+                  <hr style="border : 1px solid black;">
+                  <div class="Beneficiary">
+                    {% if not object.beneficiary_set.all %}
+                    <div class="selfBeneficiary">
+                      
+                      <div class="fundraiser-profile-shortinfo" style="margin-top: 2%; margin-bottom: 20px;">
+                        <img src="{{MEDIA_URL}}images/donation.png" width="50px;" height="50px;" class="rounded floar-left">
+                        <div class="profile-details" style="margin-left: 20%; margin-top: -20%;">
+                          <strong>Beneficiaries </strong><br>
+                          <strong>{{ object.campainer.full_name}}</strong><a href="{% url 'profile-detail' object.campainer.pk %}">{% bootstrap_icon "link" %}</a><br>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+
+                    {% endif %}
+                    <p>
+                      {% buttons %}
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      {% bootstrap_icon "star" %}add New Beneficiary
+                    </button>
+                    {% endbuttons %}
+                  </p>
+                  <div class="collapse" id="collapseExample">
+                    <div class="">
+                      <form class="form-horizontal" action="{% url 'new-fundraiser-beneficiary' object.pk %}" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form beneficiary_form %}
+                        {% buttons %}
+                          <button class="btn btn-primary btn-block" type="submit">
+                          {% bootstrap_icon "star" %}Create Beneficiary</button>
+                        {% endbuttons %}
+                      </form>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div><!-- Donation Details Tile -->
+              <div class="col-md-1"></div>
+          </div>
+        </div><!-- Campaign Headers Slides -->
+    </div>
+    <div class="col-md-12">
+        <!-- Camaign Navbar -->
+        <div class="campaign-navbar" style="margin-top: 5%;">
+          <nav class="navbar navbar-light justify-content-between navbar-expand" style="border:1px solid black;">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"><img src="{{ MEDIA_URL }}images/logo.png"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav justify-content-between" style="margin-left: 10%;">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'home' %}">Updates <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">About</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Comments</a>
+                    </li>
+                 
+                   
+                      <li class="nav-item" style="margin-left: 75%">
+                        <a href="">
+                          <button class="btn btn-warning">Ask for updates</button>
+                        </a>
+                      </li>
+                   
+                  </ul>
+                </div>
+              </nav>
+        </div>
+        <!-- Campaign Navbar -->
+      </div>
+
+      <!-- 1. Campaign Update, Fundraiser Details and Comment 2. Donors and Rewards -->
+      <!-- <div class="campaign-detailed-description"> -->
+        
+        <!-- Campaign Update, Fundraiser Details and Comment -->
+        <div class="col-md-8" id="campaign-detailed-description" style="margin-top: 20px;">
+          <!-- Capaingn Short Link -->
+          <div class="campaign-shortLink" style="margin-top: 10px;">
+            <form class="form-horizontal" action="{% url 'update-fundraiser-short-link' object.pk %}" method="post">
+              {% csrf_token %}
+              {% bootstrap_form short_link_form %}
+              {% buttons %}
+                <button class="btn btn-primary" type="submit">
+                {% bootstrap_icon "star" %}Update Short URL</button>
+              {% endbuttons %}
+            </form>
+          </div>
+          <!-- /Campaign Short Link -->
+          <!-- Campaign Short Description -->
+          <div class="campaign-updates" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title">
+                <h4>Short Description and Short Link</h4>
+              </div>
+              <div class="card-text">
+                <div class="col-md-12">
+                <!-- Camaign Short Description -->
+                <div class="campaignShortDescription" style="margin-top: 5%;">
+                   <form class="form-horizontal" action="{% url 'update-fundraiser-short-description' object.pk %}" method="post">
+                      {% csrf_token %}
+                      {% bootstrap_form short_desc_form %}
+                      {% buttons %}
+                        <button class="btn btn-primary" type="submit">
+                        {% bootstrap_icon "star" %}Update Short Description</button>
+                      {% endbuttons %}
+                    </form>
+                </div>
+                <!-- Campaign Navbar -->
+              </div>
+        <!--       <div class="col-md-3"></div> -->
+              
+              </div>
+            </div>
+          </div> <!-- Campaign Updates -->
+          
+
+          <!-- Campaign Fundraiser Detials -->
+          <div class="campaign-fundraiser-details" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title">
+                <div class="text-center">
+                  <h1>About Fundraiser</h1>
+                </div>
+              </div>
+              <div class="card-text" id="description">
+               
+                  <div class="col-md-12">
+                  <div class="campaignFullDescription" style="margin-top: 5%;">
+                    <form class="form-horizontal" action="{% url 'update-fundraiser-full-description' object.pk %}" method="post">
+                      {% csrf_token %}
+                      {% bootstrap_form full_desc_form %}
+                      {% buttons %}
+                        <button class="btn btn-primary" type="submit">
+                        {% bootstrap_icon "star" %}Update Full Description</button>
+                      {% endbuttons %}
+                    </form>
+                  </div>
+                </div>
+                  
+              </div>
+              <style type="text/css">
+                #description>p{
+                  font-size: 1em;
+                  
+                }
+              </style>
+            </div>
+          </div><!-- Campaign Fundraiser Detials -->
+
+          <!-- Campaign Comments -->
+          <div class="campaign-comments" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title">
+                <div class="text-left">
+                  <h4>Comments</h4>
+                </div>
+              </div>
+              <div class="class-text">
+                Comments
+              </div>
+            </div>
+          </div><!-- Campaign Comments -->
+
+        </div><!-- Campaign Update, Fundraiser Details and Comment -->
+        <!-- Campaign Donors and Rewards -->
+        <div class="col-md-4" style="margin-top: 20px;">
+          <!-- Top Donors -->
+          <div class="top-donors" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title" style="border-bottom: 1px solid black;">
+                <h4>Top Donors List</h4>
+              </div>
+              <div class="card-text" style="border-bottom: 1px solid black;">
+                No Donors Yet for this camagien !<br>
+                <a href="">Be the first donor for this funraiser</a>
+              </div>
+              <div class="card-text">
+                <h5>Total : 0 Donors
+                </h5>
+              </div>
+            </div>
+          </div><!-- Top Donors -->
+
+          <!-- Most Raised Medium -->
+          <div class="social-raise" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title" style="border-bottom: 1px solid black;">
+                <h4>Most Popular Social Media</h4>
+              </div>
+              <div class="card-text">
+                Social Media
+              </div>
+            </div>
+          </div><!-- Social Medium Rasied -->
+
+          <!-- Rewards -->
+          <div class="campaign-rewards" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-title" style="border-bottom: 1px solid black;">
+                <h4>Rewards List</h4>
+              </div>
+              <div class="card-text">
+                <p>
+
+                    {% buttons %}
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#rewardCollapse" aria-expanded="false" aria-controls="rewardCollapse">
+                      {% bootstrap_icon "star" %}New Reward
+                    </button>
+                      
+                    {% endbuttons %}
+                  </p>
+                  <div class="collapse" id="rewardCollapse">
+                    <div class="card card-body">
+                      <form class="form-horizontal" action="{% url 'new-fundraiser-reward' object.pk %}">
+                        {% csrf_token %}
+                        {% bootstrap_form reward_form %}
+                        {% buttons %}
+                        <button class="btn btn-primary btn-block" type="submit">{% bootstrap_icon "star" %} Create New Reward</button>
+                        {% endbuttons %}
+                      </form>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+          </div><!-- Rewards -->
+        </div><!-- Campaign Donors and Rewards -->
+
+      <!-- </div> --><!--  Campaign Update, Fundraiser Details and Comment 2. Donors and Rewards-->
+    </div><!-- Row Class -->
+  </div>
+</div>
+{% endblock %}

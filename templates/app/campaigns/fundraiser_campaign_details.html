@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+<div class="campaign-page">
+	<div class="container-fluid" style="margin-bottom: 20px;">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Campaign Title -->
+				<div class="container-fluid" style="background-color:none;">
+					<div class="campaign-title text-center">
+						<h4>Why Indian Men Rape</h4>
+						<div class="campaign-subtitle" style="background-color:none;">
+							<small>Personal</small>
+							<small>Women Empowerment</small> 
+						</div>
+					</div>
+				</div><!-- Campaign Title -->
+
+				<!-- Campaign Header Container -->
+				<div class="container-fluid" id="campaign-header-slides" style="background-color: #e6e6d1; margin-top: 20px;">
+					<div class="row">
+						<div class="col-md-1"></div>
+							<div class="col-md-7">
+								<img src="{{MEDIA_URL}}images/bigImage.jpg" width="100%">								
+							</div>
+							<!-- Donation Details Tile -->
+							<div class="col-md-3">
+								<!-- Buttons -->
+								<div class="donation-buttons">
+									<div class="contribute" style="margin-top: 10px;">
+										<button class="btn btn-block btn-lg btn-info">Contribute Now</button>
+									</div>
+									<div class="social" style="margin-top: 10px;">
+										<button class="btn btn-block btn-success btn-lg">Share On Facebook</button>
+									</div>
+								</div><!-- Buttons -->
+
+								<!-- Fundraiser Amount Details -->
+								<div class="request-amount" style="margin-top: 10px;">
+									<!-- Money Raised -->
+									<div class="money-raised">
+										<div class="title">
+											<h4>Rs. 22,32,000</h4>
+											<strong><h5>raised out of Rs. 30,00,000</h5></strong>
+										</div>
+										 <div class="progress" style="margin-top: 15px;">
+										  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+										  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+										    <span class="sr-only">70% Complete</span>
+										  </div>
+										</div>
+										<div class="supporters" style="margin-bottom: 10px;">
+											<span>26 Supporters</span>
+											<span class="text-right" style="margin-top: -40px; margin-left: 30%;">46 Days to go</span>	
+										</div>
+										 
+									</div>
+									<!-- Money Raised Ended -->
+									<hr style="border:1px solid black;">
+									<div class="fundraiser-profile-shortinfo" style="margin-top: 10px; margin-bottom: 20px;">
+										<img src="{{MEDIA_URL}}images/donation.png" width="50px;" height="50px;" class="rounded floar-left">
+										<div class="profile-details" style="margin-left: 20%; margin-top: -20%;">
+											<strong>Campaigner and Beneficiary </strong><br>
+											<a href="{% url 'profile' %}"><strong>Tara Kaushal</strong></a><br>
+											3550+ friends<br>
+											Mumbai <a href="">Contact</a>
+										</div>
+									</div>
+								</div>
+							</div><!-- Donation Details Tile -->
+							<div class="col-md-1"></div>
+					</div>
+				</div><!-- Campaign Headers Slides -->
+		</div>
+		<div class="col-md-12">
+				<!-- Camaign Navbar -->
+				<div class="campaign-navbar">
+					<nav class="navbar navbar-light justify-content-between navbar-expand" style="border:1px solid black;">
+			          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			            <span class="navbar-toggler-icon"><img src="{{ MEDIA_URL }}images/logo.png"></span>
+			          </button>
+			          
+			          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+			            <ul class="navbar-nav justify-content-between" style="margin-left: 10%;">
+			              <li class="nav-item active">
+			                <a class="nav-link" href="{% url 'home' %}">Updates <span class="sr-only">(current)</span></a>
+			              </li>
+			              <li class="nav-item">
+			                <a class="nav-link" href="">About</a>
+			              </li>
+			              
+			              <li class="nav-item">
+			                <a class="nav-link" href="">Comments</a>
+			              </li>
+			           
+			             
+			              	<li class="nav-item" style="margin-left: 75%">
+				              	<a href="">
+				              		<button class="btn btn-warning">Ask for updates</button>
+				              	</a>
+				              </li>
+			             
+			            </ul>
+			          </div>
+			        </nav>
+				</div>
+				<!-- Campaign Navbar -->
+			</div>
+
+			<!-- 1. Campaign Update, Fundraiser Details and Comment 2. Donors and Rewards -->
+			<!-- <div class="campaign-detailed-description"> -->
+				
+				<!-- Campaign Update, Fundraiser Details and Comment -->
+				<div class="col-md-8" id="campaign-detailed-description" style="margin-top: 20px;">
+					
+					<!-- Campaign Updates -->
+					<div class="campaign-updates" style="margin-top: 10px;">
+						<div class="card">
+							<div class="card-title">
+								
+							</div>
+							<div class="card-text">
+								Updates
+							</div>
+						</div>
+					</div> <!-- Campaign Updates -->
+					
+					<!-- Campaign Fundraiser Detials -->
+					<div class="campaign-fundraiser-details" style="margin-top: 10px;">
+						<div class="card">
+							<div class="card-title"></div>
+							<div class="card-text">
+								About Fundraiser
+							</div>
+						</div>
+					</div><!-- Campaign Fundraiser Detials -->
+
+					<!-- Campaign Comments -->
+					<div class="campaign-comments" style="margin-top: 10px;">
+						<div class="card">
+							<div class="card-title">
+								
+							</div>
+							<div class="class-text">
+								Comments
+							</div>
+						</div>
+					</div><!-- Campaign Comments -->
+
+				</div><!-- Campaign Update, Fundraiser Details and Comment -->
+				<!-- Campaign Donors and Rewards -->
+				<div class="col-md-4" style="margin-top: 20px;">
+					<!-- Top Donors -->
+					<div class="top-donors" style="margin-top: 10px;">
+						<div class="card">
+							<div class="card-title"></div>
+							<div class="card-text">
+								Top Donors
+							</div>
+						</div>
+					</div><!-- Top Donors -->
+
+					<!-- Most Raised Medium -->
+					<div class="social-raise" style="margin-top: 10px;">
+						<div class="card">
+							<div class="card-title"></div>
+							<div class="card-text">
+								Social Media
+							</div>
+						</div>
+					</div><!-- Social Medium Rasied -->
+
+					<!-- Rewards -->
+					<div class="campaign-rewards" style="margin-top: 10px;">
+						<div class="card">
+							<div class="card-title"></div>
+							<div class="card-text">
+								Rewards
+							</div>
+						</div>
+					</div><!-- Rewards -->
+				</div><!-- Campaign Donors and Rewards -->
+
+			<!-- </div> --><!--  Campaign Update, Fundraiser Details and Comment 2. Donors and Rewards-->
+		</div><!-- Row Class -->
+	</div>
+</div>
+{% endblock %}

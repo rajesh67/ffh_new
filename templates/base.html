@@ -1,0 +1,226 @@
+{% load static %}
+{% load bootstrap3 %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Help For Friends - Crowdfunding for social causes</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom-theme/jquery-ui-1.9.2.custom.css' %}"> -->
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'campaigns.css' %}">
+  <!-- # Fundraiser CSS Files -->
+  <link rel="stylesheet" type="text/css" href="{% static 'start.css' %}">
+  <!-- Registrations StyleSheets -->
+  <link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+  <!-- About Pages StyleSheets CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'howItWorksPage.css' %}">
+  <!-- include libraries(jQuery, bootstrap) -->
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<!-- include summernote css/js-->
+	<link href="summernote.css" rel="stylesheet">
+	<script src="summernote.js"></script>    <!-- Include Editor style. -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+     
+    <!-- Include JS file. -->
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/froala_editor.min.js'></script>
+</head>
+<body style="background: #ffffff url("{{MEDIA_URL}}backgrounds/education.jpg") no-repeat right top;">
+	<!-- Body Contents Start -->
+	<div class="row" style="">
+		<!-- <div class="col-md-1" style="background-color: ;"></div> -->
+		<!-- Page Content Area Start -->
+		<div class="col-md-12" style="">
+			<!-- Navigation Div Start -->
+			{% block navbar %}
+			<div class="container-fluid" id="navContents" style=" margin-top: 10px; margin-bottom: 20px;">
+				<nav class="navbar navbar-light fixed-top justify-content-between navbar-expand" style="border-bottom: 3px solid black;">
+		          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"><img src="{{ MEDIA_URL }}images/logo.png"></span>
+		          </button>
+		          
+		          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		            <ul class="navbar-nav justify-content-between">
+		              <li class="nav-item active">
+		                <a class="nav-link" href="{% url 'home' %}">Help For Friends <span class="sr-only">(current)</span></a>
+		              </li>
+		              <li class="nav-item">
+		                <a class="nav-link" href="{% url 'all-fundraisers-list' %}">Browse Fundraisers</a>
+		              </li>
+		              <li class="nav-item">
+		                <a class="nav-link" href="{% url 'fundraiser-start-page' %}">Start a Champaign</a>
+		              </li>
+		              <li class="nav-item">
+		                <a class="nav-link" href="{% url 'how-It-Works-page' %}">How It Works</a>
+		              </li>
+
+		              <li class="nav-item">
+		                <a class="nav-link" href="{% url 'social-links-page' %}">#FindUsOnSocialMedia</a>
+		              </li>
+		              
+		            </ul>
+		        </div><!--  -->
+		            <!-- Right Nav Bar Contents -->
+		           <div class="navbar-nav navbar-right mr-auto">
+		            {% if request.user.is_authenticated %}
+		              <div class="navbar-nav navbar-right mr-auto">
+		                <!-- <li class="nav-item active">
+		                    <a class="nav-link" href="">Feedbacks</a>
+		                  </li> -->
+		                  <li class="nav-item dropdown">
+		                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                     {% bootstrap_icon "user" %} {{ request.user.full_name }}
+		                    </a>
+		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="left:0px;">
+		                      <a class="dropdown-item" href="{% url 'profile-detail' request.user.userprofile.pk %}"><i class="material-icons">drafts</i> View Profile</a>
+		                      <div class="dropdown-divider"></div>
+		                      <a class="dropdown-item" href="{% url 'profile-detail' request.user.pk %}">My Fundraisers</a>
+		                      <a class="dropdown-item" href="#">My Donations</a>
+							  <div class="dropdown-divider"></div>
+		                      <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+		                    </div>
+		                  </li>
+		              </div>
+		              {% if request.user.is_superuser %}
+		              <div class="navbar-right navbar-nav mr-auto">
+		                <li class="nav-item active">
+		                  <a href="/admin/">Admin</a>
+		                </li>
+		              </div>
+		              {% endif %}
+		              {% else %}
+		              <div class="navbar-nav navbar-right mr-auto">
+		                <li class="nav-item active">
+		                  <a class="nav-link" href="{% url 'login-page' %}">login</a>
+		                </li>
+		                <li class="nav-item">
+		                  <a class="nav-link" href="{% url 'signup-page' %}">signup</a>
+		                </li>
+		              </div>
+		              {% endif %}<!-- /Right Nav Bar Contents -->
+		          </div>
+		        </nav>
+			</div><!-- Navigation Div End -->
+			{% endblock%}
+
+			<div style="margin-top: 1%;">
+				{% block pagecontent %}
+
+				{% endblock%}
+			</div>
+		</div>
+		<!-- Page Content Area End -->
+		<!-- <div class="col-md-1" style=""></div> -->
+	</div>
+	<!-- Body Contents End -->
+	{% block footer %}
+	<div class="row">
+		<div class="col-md-1" style="background-color: grey;"></div>
+		<div class="col-md-10">
+			<div class="container-fluid" style="background-color: #e7ebe5; margin-top: 10px;">
+				<div class="row">
+					
+					<!-- Social Links -->
+					<div class="col-md-12">
+						<div class="social-links" style="margin-top: 30px;">
+							<h4><strong>Connect with US</strong></h4>
+						</div>
+						<div class="chatting" style="margin-left: 60%; margin-top: -30px;">
+							<div class="chat">
+								<h5><strong>Questions? We will reply in 15 minutes!</strong></h5>
+								<a href="" style="margin-left: 100px;">
+									<button class="btn btn-success" style="margin-top: 10px;">Chat With US</button>
+								</a>
+							</div>
+						</div>
+						<hr style="border:1px solid black;">
+					</div>
+					<!-- Social Links -->
+					
+					<div class="col-md-3" style="margin-left: 10px;">
+						<div class="about-us">
+							<div class="about">
+								<h5><strong>About Help For Friends</strong></h5>
+								<hr style="border:1px solid black;">
+								<ul>
+									<li>
+										<a href="">About US</a>
+									</li>
+									<li>
+										<a href="">Team</a>
+									</li>
+									<li>
+										<a href="">Press and Media</a>
+									</li>
+									<li>
+										<a href="">Careers</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3" style="margin-left: 10px;">
+						<div class="fundraise">
+							<div class="fundraise">
+								<h5><strong>Fundraise</strong></h5>
+								<hr style="border:1px solid black;">
+								<ul>
+									<li>
+										<a href="">Start a Campaign</a>
+									</li>
+									<li>
+										<a href="">Donate to a Cause</a>
+									</li>
+									<li>
+										<a href="">Fundraising FAQ's</a>
+									</li>
+									<li>
+										<a href="">Pricing</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="resources">
+							<div class="resources">
+								<h5><strong>FundRaising Resources</strong></h5>
+								<hr style="border:1px solid black;">
+								<ul>
+									<li>
+										<a href="">Animal Welfare Fundraising</a>
+									</li>
+									<li>
+										<a href="">Farmer's Welfare Fundraising</a>
+									</li>
+									<li>
+										<a href="">Fundraising Tips</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1" style="background-color: grey;"></div>
+	</div>
+	{% endblock %}
+	<!-- JAVASCRIPT FILES -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>

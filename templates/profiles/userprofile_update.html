@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block pagecontent %}
+<!-- Page -->
+<div class="userProfilePage">
+	<!-- Row -->
+	<div class="row">
+		<!-- Column 1 --><div class="col-md-1"></div><!-- /column1 -->
+		<!-- Column2 --><div class="col-md-10">
+			<!-- Profile Container -->
+			<div class="container" style="padding-bottom: 5%;">
+				<div class="card" style="padding-top: 5%;">
+					<!--  -->
+					<div class="card-title">
+						<!-- Profile Header (Image + Profile Completenes on left) -->
+						<div class="row">
+							<!-- Profile Image + Username -->
+							<div class="col-md-4">
+								<img src="{{MEDIA_URL}}images/donation.png" width="50%">
+								<div class="user-info" style="margin-left: 50%; margin-top: -40%;">
+									<h5><strong>{{ request.user.full_name }}</strong></h5>
+								</div>
+							</div><!-- Profile Image + Username -->
+						</div><!-- /Profile Header -->
+					</div><!--  -->
+					<div class="card-text">
+						<div class="profile-details" style="margin-top: 10%; margin-left: 5%; padding-bottom: 25%;">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+							  <li class="nav-item">
+							    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" id="fundraisers-tab" data-toggle="tab" href="#fundraisers" role="tab" aria-controls="fundraisers" aria-selected="false">Fundraisers</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" id="donations-tab" data-toggle="tab" href="#donations" role="tab" aria-controls="donations" aria-selected="false">Donations</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" id="comments-tab" data-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">My Comments</a>
+							  </li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+							  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							  	<div class="profile-contents">
+							  		<div id="accordion" role="tablist">
+									  <div class="card">
+									    <div class="card-header" role="tab" id="headingOne">
+									      <h5 class="mb-0">
+									        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									          Personal Details
+									        </a>
+									      </h5>
+									    </div>
+
+									    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+									      <div class="card-body">
+									      	<div class="errorlist">
+									      		{{ form.non_field_error }}
+									      	</div>
+									        {# Display a form #}
+											<form action="/url/to/submit/" method="post" class="form">
+											  {% csrf_token %}
+											  <div class="form-row">
+											  	<div class="form-group col-md-3"></div>
+											  	<div class="form-group col-md-6">
+											  		{% bootstrap_form form %}	
+											  	</div>
+											  	<div class="form-group col-md-3"></div>
+											  </div><!-- /User Basic Details -->
+											    <button type="submit" class="btn btn-primary ">
+											      {% bootstrap_icon "star" %} Submit
+											    </button>
+											  
+											</form><!-- /Form -->
+									      </div>
+									    </div>
+									  </div>
+									  <div class="card">
+									    <div class="card-header" role="tab" id="headingTwo">
+									      <h5 class="mb-0">
+									        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									          Update Password
+									        </a>
+									      </h5>
+									    </div>
+									    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+									      <div class="card-body">
+									        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+									      </div>
+									    </div>
+									  </div>
+									  
+									</div>
+							  	</div>
+							  </div><!-- /Profile Details -->
+							  <div class="tab-pane fade" id="fundraisers" role="tabpanel" aria-labelledby="fundraisers-tab">
+							  	<!-- Fundraiser Navs -->
+							  	<div class="fundraisers-navs" style="margin-top: 2%;">
+							  		<ul class="nav nav-tabs" id="myTab" role="tablist">
+									  <li class="nav-item" style="width: 20%;">
+									    <a class="nav-link active text-center" id="saved-tab" data-toggle="tab" href="#saved" role="tab" aria-controls="saved" aria-selected="true">Saved</a>
+									  </li>
+									  <li class="nav-item" style="width: 20%;">
+									    <a class="nav-link text-center" id="drafts-tab" data-toggle="tab" href="#drafts" role="tab" aria-controls="drafts" aria-selected="false">Drafts</a>
+									  </li>
+									  
+									</ul>
+									<div class="tab-content" id="myTabContent" style="margin-top: 5%;">
+									  <div class="tab-pane fade show active" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+									  	<div class="text-center">
+									  		<h4>Want to be the cool kid on the block?</h4>
+									  		<h5>Start your own fundraiser and affect social change now!</h5>
+									  		<a href="{% url 'fundraiser-start-page' %}"><button class="btn btn-primary btn-lg">Start A Fundraiser</button></a>
+									  	</div>
+									  </div>
+									  <div class="tab-pane fade" id="drafts" role="tabpanel" aria-labelledby="drafts-tab">
+									  	<div class="drafts-list">
+									  		<div class="info info-warning">
+									  			<p>
+													Here's the fundraiser(s) you've worked on...
+
+													Let's fill in everything that's required and take them live! Please contact your campaign manager in case you have any queries.
+												</p>
+									  		</div>
+									  	</div>
+									  </div>
+									  
+									</div>
+							  	</div><!-- Fundraisers Navs -->
+							  </div>
+							  <div class="tab-pane fade" id="donations" role="tabpanel" aria-labelledby="donations-tab">
+							  	<div class="donations-contents" style="margin-top: 5%;">
+							  		<div class="text-center">
+							  			<h3>Hey, haven't found a fundraiser that speaks to your heart yet?</h3>
+							  			<small>Check out our latest fundraisers!</small><br>
+							  			<a href=""><button class="btn btn-primary btn-lg">Browse Fundraisers</button></a>
+							  		</div>
+							  	</div>
+							  </div>
+							  <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+							  	<div class="comments-contents" style="margin-top: 5%;">
+							  		<h4>My Comments</h4>
+							  	</div>
+							  	<div class="comments-list">
+							  		<div class="text-center">I haven’t Commented on any fundraisers yet.</div>
+							  	</div>
+							  </div>
+							</div>
+						</div>
+					</div><!-- /Card-text -->
+				</div>
+			</div>
+			<!-- /Profile Container -->
+		</div><!-- /Column2 -->
+		<!-- Column3 --><div class="col-md-1"></div><!-- /Column3 -->
+	</div>
+	<!-- /Row -->
+</div>
+<!-- /Page -->
+{% endblock %}

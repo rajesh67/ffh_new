@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+<!-- How It Works Page -->
+<div class="howItWorksPage">
+	<!-- The Row class -->
+	<div class="row">
+	<!-- Header With Video Div -->
+	<div class="col-md-12" id="header">
+		
+			<div class="header">
+				<div class="text-center">
+					<h2><strong>How It Works</strong></h2>
+					<h4>Get funded the quick, easy and safe way.</h4>
+				</div>
+
+				<div class="card">
+					<div class="card-text">
+						<!-- Video -->
+						<div class="embed-responsive embed-responsive-16by9">
+						  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+						</div><!-- /Video -->
+					</div>
+					
+				</div>
+			</div>
+		
+	</div><!-- Header With Video Div -->
+
+	<!-- Navbar -->
+	<div class="col-md-12">
+		<div class="navbar ">
+			  <div class="headerText">
+			  	<h1 class="text-right">Get Started</h1>
+			  	<h3 class="text-right">Start a crowdfunding fundraiser and become a leader of positive social change</h3>
+			  </div>
+			  <a class="nav-item" href="{% url 'fundraiser-start-page' %}" id="fundRaiserStartLink">
+			  <button class="btn btn-info btn-block btn-lg">Start A FundRaiser</button></a>
+			
+		</div>
+	</div><!-- /Navbar -->
+
+	<!-- Why Us Div -->
+	<div class="col-md-12">
+		<div class="whyUS" style="margin-right: 10%; margin-bottom: 1%">
+			<div class="card">
+				<div class="card-title">
+					<div class="text-center">
+						<h3>Why Help For Friends?</h3>
+					</div>
+				</div>
+				<div class="card-text">
+					<div class="container-fluid" id="container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="OurFeature">
+									<p>Help For Friends is Asia's most-visited crowdfunding platform with the largest funding community</p>
+								</div>
+
+								<hr style="border: 1px dotted black;">
+
+								<div class="OurFeature">
+									<p>Starting a fundraiser on Ketto is FREE</p>
+								</div>
+
+								<hr style="border: 1px dotted black;">
+
+								<div class="OurFeature">
+									<p>There is no penalty if you don't raise the total amount. Whatever funds you raise will still get disbursed</p>
+								</div>
+
+								<hr style="border: 1px dotted black;">
+
+								<div class="OurFeature">
+									<p>You can create and personalize your fundraiser page in minutes</p>
+								</div>
+								<hr style="border: 1px dotted black;">
+
+								<div class="OurFeature">
+									<p>You can bedazzle your fundraiser story with several images, videos and even list rewards that you can give your supporters </p>
+								</div>
+							</div><!-- /First Column -->
+							<div class="col-md-6">
+								<div class="OurFeature">
+									<p>Help For Friends's experienced content and design team will help curate your page so it looks top-notch</p>
+								</div>
+								<hr style="border: 1px dotted black;">
+								<div class="OurFeature">
+									<p>You get tried and tested, result-oriented marketing tips and ideas to make your fundraiser a success</p>
+								</div>
+								<hr style="border: 1px dotted black;">
+								<div class="OurFeature">
+									<p>You get instant updates on your fundraiser's progress via email and SMS</p>
+								</div>
+								<hr style="border: 1px dotted black;">
+								<div class="OurFeature">
+									<p>You get any queries answered in seconds via our 24/7/365 Instant Chatting interface</p>
+								</div>
+								<hr style="border: 1px dotted black;">
+								<div class="OurFeature">
+									<p>You can offer your supporters several modes to make contributions on Ketto - cash, cheque and online transactions </p>
+								</div>
+							</div><!-- /Second Column -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div><!-- /Why Us Div -->
+
+	<!-- CrowFunding Benefits -->
+	<div class="col-md-12">
+		<div class="container-fluid" id="benefits"></div>
+	</div><!-- /CrowFunding Benefits -->
+	</div>
+	<!-- /The Row Class -->
+</div>
+
+{% endblock %}

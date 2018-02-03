@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+<div class="organization-page">
+	<!-- Row -->
+	<div class="row">
+		<!-- origanization Header Image -->
+		<div class="col-md-12">
+			<div class="card" style="background-color: grey;">
+				<div class="card-text">
+					<div class="text-center">
+						<h2>Friends For Animals</h2>
+						<h4>Animal Welfare</h4>
+					</div>
+				</div>
+			</div>
+			<div class="image">
+				<img src="{{MEDIA_URL}}images/bigImage.jpg" width="80%" height="80%" style="margin-left: 10%; margin-right: 20px;">
+			</div>
+		</div><!-- Organization Header Image -->
+
+		<!-- Organization Navigation Bar -->
+		<div class="col-md-12">
+			<!-- Camaign Navbar -->
+			<div class="campaign-navbar">
+				<nav class="navbar navbar-light justify-content-between navbar-expand" style="border:1px solid black;">
+		          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"><img src="{{ MEDIA_URL }}images/logo.png"></span>
+		          </button>
+		          
+		          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		            <ul class="navbar-nav justify-content-between" style="margin-left: 10%;">
+		              <li class="nav-item active">
+		                <a class="nav-link" href="{% url 'home' %}">Updates <span class="sr-only">(current)</span></a>
+		              </li>
+		              <li class="nav-item">
+		                <a class="nav-link" href="">About</a>
+		              </li>
+		              
+		              <li class="nav-item">
+		                <a class="nav-link" href="">Comments</a>
+		              </li>
+		           
+		             
+		              	<li class="nav-item" style="margin-left: 55%">
+			              	<a href="">
+			              		<button class="btn btn-info btn-lg">Start A FundRaiser</button>
+			              	</a>
+			            </li>
+
+			            <li class="nav-item dropdown" style="margin-left: 10px;">
+					        <a class="nav-link dropdown-toggle btn btn-success btn-lg" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					          Donate
+					        </a>
+					        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					          <a class="dropdown-item" href="#">Donate Monthly</a>
+					          <a class="dropdown-item" href="#">Donate Now</a>
+					        </div>
+					      </li>
+		             
+		            </ul>
+		          </div>
+		        </nav>
+			</div>
+			<!-- Campaign Navbar -->
+		</div><!-- Organization Navigation Bar -->
+
+			<!-- Organization Campaign List -->
+			<div class="col-md-12">
+				<!-- Tranding Fundraisers -->
+				<div class="container-fluid" id="trendingFunds" style="margin-top: 10px; margin-bottom: 20px;">
+
+						<div class="card">
+							<div class="card-text" style="margin-bottom: 40px;">
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-3" style="background-color: #d9f4f24d;">
+										<a href="{% url 'campaign' %}">
+											<div class="campaign-tile">
+												<div class="campaign-tile-images">
+													<img src="{{MEDIA_URL}}images/header.png" width="100%" style="border:0px solid black;">
+													<img src="{{MEDIA_URL}}images/volunteer_header.gif" style="margin-top: 5px;" width="40%">
+												</div>
+
+												<!-- Campaign Titles -->
+												<div class="campaign-tile-titles">
+													<div class="campaign-name">
+														<div class="title"><a href="{% url 'campaign' %}">Help me save my pet animal</a></div>
+														<div class="user-details">
+															<img src="{{MEDIA_URL}}images/donation.png" width="10%" style=""> by <a href="{% url 'profile' %}">Rajesh</a>
+														</div>
+													</div>
+												</div><!-- Campaign Titles -->
+
+												<!-- Campaign Description -->
+												<div class="campaign-tile-shortdetail" style="font-size: .8em;">
+													<p>Manya Kalra and Sana Kharbanda have taken a pledge to provide pure drinking water to slum-dwellers in and around Delhi and Gurgaon. People living in these slums are subject to various waterborne diseases, caused primarily by drinking untreated water. Typically, the only water these people have access to comes mixed with chemicals and other impurities. Lack of alternatives leaves them with no choice but to drink this water. This Diwali, let's make Elixir, the essence of life itself, accessible to everyone :) </p>
+												</div><!-- Campaign Description -->
+												
+												<div class="campaign-money-raised">
+													<p>Rs. 22,32,000</p>
+													 <div class="progress" style="margin-top: -15px;">
+													  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+													  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+													    <span class="sr-only">70% Complete</span>
+													  </div>
+													</div>
+													<p>70%</p>
+													<p class="text-right" style="margin-top: -40px;">46 Days to go</p> 
+												</div>
+											</div>
+										</a>
+									</div>
+									
+									<div class="col-md-3" style="margin-left: 10px; background-color: #d9f4f24d;">
+										<a href="{% url 'campaign' %}">
+											<div class="campaign-tile">
+												<div class="campaign-tile-images">
+													<img src="{{MEDIA_URL}}images/header.png" width="100%" style="border:0px solid black;">
+													<img src="{{MEDIA_URL}}images/volunteer_header.gif" style="margin-top: 5px;" width="40%">
+												</div>
+
+												<!-- Campaign Titles -->
+												<div class="campaign-tile-titles">
+													<div class="campaign-name">
+														<div class="title"><a href="{% url 'campaign' %}">Help me save my pet animal</a></div>
+														<div class="user-details">
+															<img src="{{MEDIA_URL}}images/donation.png" width="10%" style=""> by <a href="{% url 'profile' %}">Rajesh</a>
+														</div>
+													</div>
+												</div><!-- Campaign Titles -->
+
+												<!-- Campaign Description -->
+												<div class="campaign-tile-shortdetail" style="font-size: .8em;">
+													<p>Manya Kalra and Sana Kharbanda have taken a pledge to provide pure drinking water to slum-dwellers in and around Delhi and Gurgaon. People living in these slums are subject to various waterborne diseases, caused primarily by drinking untreated water. Typically, the only water these people have access to comes mixed with chemicals and other impurities. Lack of alternatives leaves them with no choice but to drink this water. This Diwali, let's make Elixir, the essence of life itself, accessible to everyone :) </p>
+												</div><!-- Campaign Description -->
+												
+												<!-- Money Raised -->
+												<div class="campaign-money-raised">
+													<p>Rs. 22,32,000</p>
+													 <div class="progress" style="margin-top: -15px;">
+													  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+													  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+													    <span class="sr-only">70% Complete</span>
+													  </div>
+													</div>
+													<p>70%</p>
+													<p class="text-right" style="margin-top: -40px;">46 Days to go</p> 
+												</div>
+												<!-- Money Raised Ended -->
+											</div>
+										</a>
+									</div>
+									
+									<div class="col-md-3" style="margin-left: 10px; background-color: #d9f4f24d;">
+										<a href="{% url 'campaign' %}">
+											<div class="campaign-tile">
+												<!-- Campaign Images -->
+												<div class="campaign-tile-images">
+													<img src="{{MEDIA_URL}}images/header.png" width="100%" style="border:0px solid black;">
+													<img src="{{MEDIA_URL}}images/volunteer_header.gif" style="margin-top: 5px;" width="40%">
+												</div><!-- Campaign Images -->
+
+												<!-- Campaign Titles -->
+												<div class="campaign-tile-titles">
+													<div class="campaign-name">
+														<div class="title"><a href="{% url 'campaign' %}">Help me save my pet animal</a></div>
+														<div class="user-details">
+															<img src="{{MEDIA_URL}}images/donation.png" width="10%" style=""> by <a href="{% url 'profile' %}">Rajesh</a>
+														</div>
+													</div>
+												</div><!-- Campaign Titles -->
+
+												<!-- Campaign Description -->
+												<div class="campaign-tile-shortdetail" style="font-size: .8em;">
+													<p>Manya Kalra and Sana Kharbanda have taken a pledge to provide pure drinking water to slum-dwellers in and around Delhi and Gurgaon. People living in these slums are subject to various waterborne diseases, caused primarily by drinking untreated water. Typically, the only water these people have access to comes mixed with chemicals and other impurities. Lack of alternatives leaves them with no choice but to drink this water. This Diwali, let's make Elixir, the essence of life itself, accessible to everyone :) </p>
+												</div><!-- Campaign Description -->
+
+												<!-- Money Raised -->
+												<div class="campaign-money-raised">
+													<p>Rs. 22,32,000</p>
+													 <div class="progress" style="margin-top: -15px;">
+													  <div class="progress-bar" role="progressbar" aria-valuenow="70"
+													  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+													    <span class="sr-only">70% Complete</span>
+													  </div>
+													</div>
+													<p>70%</p>
+													<p class="text-right" style="margin-top: -40px;">46 Days to go</p> 
+												</div>
+												<!-- Money Raised -->
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div><!-- Tranding Fundraisers End -->
+		</div><!-- Organization Campaign List -->
+	</div><!-- Row -->
+</div>
+{% endblock %}

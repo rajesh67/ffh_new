@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load common_fundraiser_tags %}
+{% block pagecontent %}
+<div class="compaigns-listing-page" >
+	<div class="row">
+	
+
+		<!-- Listing Page Contents -->
+		<div class="container-fluid" id="listing-contents">
+			<div class="row">
+				<!-- Categories Listing Column -->
+				<div class="col-md-1"></div>
+				
+
+				<!-- Campaigns Listing Column -->
+				<div class="col-md-10">
+					
+					<!-- Tranding Fundraisers -->
+					<div class="container-fluid" id="trendingFunds" style="margin-let: -10px; margin-bottom: 20px;">
+
+							<div class="card">
+								<div class="card-text" style="margin-bottom: 40px;">
+									
+									<!-- Search Filters -->
+									<div class="search-filters" style="margin-left: 10%;">
+										
+								
+									<div class="category" style="margin-top: 2%;">
+										
+										
+
+										<nav class="nav nav-pills nav-justified" style="font-size: 0.8em;">
+										  <a class="nav-item nav-link" href="#">Trending</a>
+										  <a class="nav-item nav-link" href="#">Tax Benefit</a>
+										  <a class="nav-item nav-link active" href="#">Most Active</a>
+										  <a class="nav-item nav-link" href="#">Ending Soon</a>
+										  <a class="nav-item nav-link" href="#">Most Funded</a>
+										  <a class="nav-item nav-link" href="#">Ended</a>
+										</nav>
+										
+									</div>
+								
+							
+									</div><!-- Search Filters -->
+									<hr style="border : 1px solid black;">
+									<div class="row">
+										{% for object in object_list %}
+										<div class="col-md-3" style="background-color: #d9f4f24d; margin-left: 5%; margin-top: 5%; height: 50%;">
+											<a href="{% url 'detail-fundraiser' object.pk %}">
+												<div class="campaign-tile">
+													<div class="campaign-tile-images">
+														<img src="{{MEDIA_URL}}{{object.image}}" width="80%" style="border:0px solid black;">
+														<img src="{{MEDIA_URL}}images/volunteer_header.gif" style="margin-top: 5px;" width="40%">
+													</div>
+
+													<!-- Campaign Titles -->
+													<div class="campaign-tile-titles">
+														<div class="campaign-name">
+															<div class="title"><a href="{% url 'detail-fundraiser' object.pk %}">{{object.title}}</a></div>
+															<div class="user-details">
+																<img src="{{MEDIA_URL}}images/donation.png" width="10%" style=""> by <a href="{% url 'profile-detail' request.user.userprofile.pk %}"><small>{{ object.campainer.full_name}}</small></a>
+															</div>
+														</div>
+													</div><!-- Campaign Titles -->
+
+													<!-- Campaign Description -->
+													<div class="campaign-tile-shortdetail" style="font-size: .8em;">
+														<p>{{object.short_description}} </p>
+													</div><!-- Campaign Description -->
+													
+													<div class="campaign-money-raised" style="margin-bottom: 0px;">
+														<p>Rs. {{object.goal_amount}}</p>
+														 <div class="progress" style="margin-top: -15px;">
+														  <div class="progress-bar" role="progressbar" aria-valuenow="{{object.progress}}"
+														  aria-valuemin="0" aria-valuemax="100" style="width:{{object.progress}}%">
+														    <span class="sr-only">{{object.progress}}% Complete</span>
+														  </div>
+														</div>
+														<p>{{object.progress}}%</p>
+														<p class="text-right" style="margin-top: -40px;">{{object.end_date|duration}} Days to go</p> 
+													</div>
+												</div>
+											</a>
+										</div>
+										
+										
+										
+										{% endfor%}
+										
+									</div>
+								</div>
+							</div>
+					</div><!-- Tranding Fundraisers End -->
+				</div><!-- Campaigns Listing Column -->
+			</div><!-- Contents Row -->
+			<div class="">
+				<nav class="navbar fixed-bottom navbar-light bg-light " style="margin-bottom: 0%;">
+				  <div class="container-fluid">
+				  	<div class="row">
+				  		<div class="col-md-1"></div>
+				  		<div class="col-md-1">
+				  			<a class="nav-item nav-link" href="#" style="margin-top: 2%; margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/education.png" width="150%" style="border-radius: 100%; z-index: -1;"> <p style="margin-left: 1%; margin-top: -10%; z-index: 2; ">Education</p></a>
+				  		</div>
+				  		<div class="col-md-1">
+				  			<a class="nav-link" href="#" style="margin-top: 2%; margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/health.jpg" width="150%" style="border-radius: 100%; z-index: -1;" alt="Personal Health"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;">Health</p></a>
+				  		</div>
+				  		<div class="col-md-1">
+				  			<a class="nav-link" href="#" style="margin-top: 2%; margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/feminism.png" width="150%" style="border-radius: 100%; z-index: -1;"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;">Women Empowerment</p></a>
+				  		</div>
+				  		<div class="col-md-1">
+				  			<a class="nav-link" href="#" style="margin-top: 2%; margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/animal_welfare.png" width="150%" style="border-radius: 100%; z-index: -1;"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;">Animal Welfare</p></a>
+				  		</div>
+				  		<div class="col-md-1">
+				  			<a class="nav-link" href="#" style="margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/photo.jpg" width="150%" style="border-radius: 100%; z-index: -1;"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;">Creative</p></a>
+				  		</div>
+
+				  		<div class="col-md-1">
+							  <a class="nav-link" href="#" style="margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/meal_logo.jpg" width="150%" style="border-radius: 100%"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;" class="text-center">Food/Hunger</p></a>
+						</div>
+						<div class="col-md-1">
+							<a class="nav-link" href="#" style="margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/environment.jpg" width="150%" style="border-radius: 100%"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;">Environment</p></a>
+						</div>
+						<div class="col-md-1">
+							<a class="nav-link" href="#" style="margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/children.png" width="150%" style="border-radius: 100%"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;">Children</p></a>
+						</div>
+						<div class="col-md-1">
+							<a class="nav-link" href="#" style="padding-bottom: -5%; margin-bottom: -45%;"><img src="{{MEDIA_URL}}smallLogos/community.jpg" width="150%" style="border-radius: 100%"><p style="margin-left: 1%; margin-top: -10%; z-index: 2;" class="text-center"> Community Development</p></a>
+						</div>
+						<div class="col-md-2"></div>
+				  	</div>
+				  </div>
+				</nav>
+			</div>
+			
+		</div><!-- Listing Page Contents -->
+	</div>
+
+</div>
+{% endblock %}

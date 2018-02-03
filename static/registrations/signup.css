@@ -1,0 +1,24 @@
+.signupPage{
+	padding-top: 1%;
+	padding-bottom: 100px;
+	background-color: beige;
+}
+
+.signupPage > div> div.card#signupForm{
+	margin-right: 30%;
+	margin-left: 30%;
+}
+
+.signupPage > div.row > div > div.card > div.card-title> div.text-center >p{
+	margin-top: 10px;
+}
+
+.signupPage > div.row > div > div.card > div.card-text>div.personal>button{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.signupPage > div.row > div > div.card > div.card-text>div.org>button{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

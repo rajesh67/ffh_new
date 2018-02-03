@@ -1,0 +1,50 @@
+.howItWorksPage{
+  background-color: beige;
+  margin-bottom: 20px;
+}
+
+.howItWorksPage >div.row > div#header > div.header> div.card{
+	margin-top: 2%;
+	margin-left: 26%;
+	margin-right: 20%;
+	margin-bottom: 5%;
+	width: 50%;
+}
+
+.howItWorksPage > div.row > div > div.navbar{
+	background-color: goldenrod;
+}
+
+.howItWorksPage > div.row > div > div.navbar > a{
+	margin-left: 75%;
+	margin-top: -5%;
+}
+
+.howItWorksPage > div.row > div > div.navbar > a>button{
+	margin-top: -35%;
+}
+
+.howItWorksPage > div.row > div > div.navbar > div.headerText{
+	margin-left: 10%;
+	width: 60%;
+	text-decoration-color: yellow;
+}
+
+
+.howItWorksPage > div.row > div > div.whyUS > div.card{
+	margin-top: 1%;
+	margin-left: 10%;
+	width: 90%;
+}
+
+.whyUS>div.card{
+	margin-right: : 10%;
+}
+
+.howItWorksPage > div.row > div > div.whyUS > div > div.card-text >div.container-fluid > div.row{
+	
+	width: 90%;
+}
+
+.howItWorksPage > div.row > div > div.whyUS > div > div.card-text >div.container-fluid > div.row > div{
+}

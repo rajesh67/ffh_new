@@ -1,0 +1,25 @@
+.loginPage{
+	padding-top: 1%;
+	padding-bottom: 5%;
+	background-color: beige;
+}
+
+.loginPage > div.row > div > div.card {
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+.loginPage > div.row > div > div.card > div.card-text > div > button{
+	margin : 5% 5%;
+
+	width: 90%;
+}
+
+.loginPage > div.row > div > div.card > div.card-text > div.siginForm {
+	margin: 5% 5%;
+}
+
+.loginPage > div.row > div > div.card > div.card-text > div.siginForm > form > input{
+	margin: 5% 5%;
+	width: 90%;
+}
